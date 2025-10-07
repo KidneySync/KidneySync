@@ -29,31 +29,6 @@ Our mission is to make **preventive kidney health checks** accessible and intell
 
 ---
 
-## 🧩 System Architecture
-
-KidneySync/
-│
-├── frontend/
-│ ├── index.html # Landing page
-│ ├── kidney_check.html # Kidney test UI
-│ ├── event_calendar.html # Event page
-│ ├── about.html # About section
-│ ├── sign_in.html # Login page
-│ └── assets/
-│ ├── css/ # Stylesheets
-│ ├── js/ # JavaScript modules
-│ └── images/ # Logos and UI visuals
-│
-├── backend/
-│ ├── prediction_system.py # Streamlit-based ML model
-│ ├── db_connect.py # database connector
-│ └── dataset.csv # Training dataset
-│
-└── README.md # Project documentation
-
-
----
-
 ## ⚙️ Tech Stack
 
 | Layer | Technologies |
