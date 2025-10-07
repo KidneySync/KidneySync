@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>KidneySync — Save Lives</title>
+
+    <!-- Google Font for Zen Dots -->
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            /* Default font for everything else */
+            background: #0ea5a4;
+            color: #fff;
+        }
+
+        /* HERO */
+        .hero-section {
+            position: relative;
+            min-height: 60vh;
+            background-image: url('./images/hero-bg.jpeg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* dark overlay so text is readable */
+        .hero-section::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(3, 7, 18, 0.35), rgba(3, 7, 18, 0.5));
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* flowing overlay as separate element */
+        .flowing-bg {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 45%;
+            height: 60%;
+            background-image: url('./images/flowing-bg.png');
+            background-size: contain;
+            background-position: bottom right;
+            background-repeat: no-repeat;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        /* NAV */
+        .navbar {
+            position: relative;
+            z-index: 3;
+            width: 100%;
+            max-width: 1200px;
+            margin: 1rem auto;
+            padding: 0 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo img {
+            width: 300px;
+            height: 300px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 12px;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: #0ea5a4;
+            text-decoration: none;
+            padding: 6px 8px;
+            border-radius: 8px;
+        }
+
+        .nav-menu a.active {
+            color: #0ea5a4;
+        }
+
+        /* HERO CONTENT */
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem 1rem;
+            margin-top: 10vh;
+            text-align: center;
+        }
+
+        /* Only the hero title uses Zen Dots */
+        .hero-content h1 {
+            font-family: 'Zen Dots', sans-serif;
+            font-size: 4.2rem;
+            margin-bottom: .5rem;
+        }
+
+        .hero-sub {
+            color: #9ef0dd;
+            letter-spacing: .24em;
+            margin-bottom: 2rem;
+        }
+
+        /* Check now button */
+        .cta {
+            background: #0ea5a4;
+            color: #022;
+            padding: .84rem 2rem;
+            border-radius: 60px;
+            border: 0;
+            cursor: pointer;
+            font-weight: 100;
+        }
+
+        /* BLOG SECTION */
+        .blog-section {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 1rem;
+            position: relative;
+            z-index: 4;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+        }
+
+        .blog-card {
+            background: #0ea5a4;
+            color: #071026;
+            border-radius: 12px;
+            overflow: hidden;
+
+        }
+
+        .blog-image {
+            height: 180px;
+            position: relative;
+            background: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .blog-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .blog-image .fallback {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+        }
+
+        .blog-content {
+            padding: 14px;
+        }
+
+        .blog-title {
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .blog-desc {
+            color: #000000;
+            margin-bottom: 10px;
+        }
+
+        .btn-view {
+            background: #4a9191;
+            color: #000000;
+            padding: .5rem .9rem;
+            border-radius: 8px;
+            border: 0;
+            cursor: pointer;
+        }
+
+        /* small screens */
+        @media (max-width:600px) {
+            .hero-content h1 {
+                font-size: 1.9rem;
+            }
+
+            .flowing-bg {
+                width: 70%;
+                height: 28%;
+                right: -6%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="hero-section">
+        <div class="flowing-bg" aria-hidden="true"></div>
+
+        <header class="navbar" role="banner">
+            <div class="logo">
+                <img id="logoImg" src="./images/logo.png" alt="KidneySync logo"
+                    onerror="this.style.display='none'; document.getElementById('logoFallback').style.display='block'">
+                <svg id="logoFallback" class="logo-fallback" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"
+                    role="img" aria-label="logo fallback" style="display:none">
+                    <defs>
+                        <linearGradient id="lg" x1="0" x2="1">
+                            <stop offset="0" stop-color="#06b6a4" />
+                            <stop offset="1" stop-color="#0891b2" />
+                        </linearGradient>
+                    </defs>
+                    <rect rx="16" width="100" height="100" fill="url(#lg)"></rect>
+                    <text x="50" y="56" text-anchor="middle" fill="#fff" font-size="44" font-family="Segoe UI,Roboto"
+                        font-weight="700">KS</text>
+                </svg>
+            </div>
+
+            <nav aria-label="main">
+                <ul class="nav-menu">
+                    <li><a href="./index.html" class="active">Home</a></li>
+                    <li><a href="https://kidney-sync-predictionsystem.streamlit.app/" target="_blank">Kidney Check</a>
+                    </li>
+                    <li><a href="./html/error.html">KidneyAI</a></li>
+                    <li><a href="./html/event_cal.html">Event Calendar</a></li>
+                    <li><a href="./html/aboutus.html">About</a></li>
+                    <li><a href="./html/login.html">Sign in</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="hero-content">
+            <h1>Check Your Kidneys</h1>
+            <div class="hero-sub">ANYTIME — ANYWHERE</div>
+            <button class="cta"
+                onclick="window.open('https://kidney-sync-predictionsystem.streamlit.app/', '_blank')">Check
+                Now</button>
+
+        </div>
+    </section>
+
+    <section class="blog-section" aria-labelledby="blogs-title">
+        <h2 id="blogs-title" style="color:#000000;margin-bottom:12px">Blogs About Kidney Disease</h2>
+
+        <div class="blog-grid">
+            <!-- CARD 1 -->
+            <article class="blog-card">
+                <div class="blog-image">
+                    <img src="./images/kidney-health.png" alt="kidney health"
+                        onerror="this.style.display='none'; this.parentElement.querySelector('.fallback').style.display='block'"
+                        onload="this.parentElement.querySelector('.fallback').style.display='none'">
+                    <svg class="fallback" viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg" style="display:none">
+                        <rect width="100%" height="100%" fill="#fb923c" />
+                        <text x="16" y="96" fill="#fff" font-size="18" font-family="Segoe UI, Roboto">Kidney Health -
+                            Nettle leaf study</text>
+                    </svg>
+                </div>
+                <div class="blog-content">
+                    <div class="blog-title">Kidney Health: This herb may replace costly kidney cleansers</div>
+                    <div class="blog-desc">Nettle leaf may support kidney health. A study showed nettle tea improved
+                        kidney function.</div>
+                    <button class="btn-view" onclick="window.open('http://tiny.cc/uqjt001', '_blank')">View</button>
+                </div>
+            </article>
+
+            <!-- CARD 2 -->
+            <article class="blog-card">
+                <div class="blog-image">
+                    <img src="./images/cell-therapy.jpg" alt="cell therapy"
+                        onerror="this.style.display='none'; this.parentElement.querySelector('.fallback').style.display='block'"
+                        onload="this.parentElement.querySelector('.fallback').style.display='none'">
+                    <svg class="fallback" viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg" style="display:none">
+                        <rect width="100%" height="100%" fill="#60a5fa" />
+                        <text x="16" y="96" fill="#fff" font-size="18" font-family="Segoe UI, Roboto">UC Davis cell
+                            therapy trial</text>
+                    </svg>
+                </div>
+                <div class="blog-content">
+                    <div class="blog-title">UC Davis launches cell therapy trial for chronic kidney disease</div>
+                    <div class="blog-desc">Novel therapy could restore kidney function in some patients.</div>
+                    <button class="btn-view" onclick="window.open('http://tiny.cc/0rjt001', '_blank')">View</button>
+                </div>
+            </article>
+
+            <!-- CARD 3 -->
+            <article class="blog-card">
+                <div class="blog-image">
+                    <img src="./images/ai-tools.png" alt="ai tools"
+                        onerror="this.style.display='none'; this.parentElement.querySelector('.fallback').style.display='block'"
+                        onload="this.parentElement.querySelector('.fallback').style.display='none'">
+                    <svg class="fallback" viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg" style="display:none">
+                        <rect width="100%" height="100%" fill="#a78bfa" />
+                        <text x="16" y="96" fill="#fff" font-size="18" font-family="Segoe UI, Roboto">AI tools
+                            personalize kidney care</text>
+                    </svg>
+                </div>
+                <div class="blog-content">
+                    <div class="blog-title">Penn AI tools and datasets personalize kidney patient treatments</div>
+                    <div class="blog-desc">Penn Medicine and Wharton create CellSpectra and SISKA to improve treatments.
+                    </div>
+                    <button class="btn-view" onclick="window.open('http://tiny.cc/2rjt001', '_blank')">View</button>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <footer style="text-align:center;padding:2rem;color: #0ea5a4;background: #030303;margin-top:2rem">© 2025 KidneySync
+    </footer>
+
+</body>
+
+</html>

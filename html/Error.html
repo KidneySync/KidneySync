@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Error 404 - Looks Like You Are Lost</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            background: radial-gradient(circle at top, #000000, #000000, #000000);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 120px;
+            font-weight: 800;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #0ea5a4, #0072ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        h2 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: #ccc;
+        }
+
+        p {
+            font-size: 16px;
+            color: #aaa;
+            max-width: 400px;
+            margin-bottom: 30px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff;
+            background: linear-gradient(90deg, #0072ff, #0ea5a4);
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        a:hover {
+            background: linear-gradient(90deg, #0ea5a4, #0072ff);
+            transform: scale(1.05);
+        }
+
+        .glow {
+            text-shadow: 0 0 10px #0ea5a4, 0 0 20px #0072ff;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="glow">404</h1>
+    <h2>Looks Like You Are Lost</h2>
+    <p>The server did not to respond. Please check your connection or try again later.</p>
+    <a href="/">Try Again</a>
+</body>
+
+</html>

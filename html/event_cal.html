@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KidneySync Events</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ------------------ GLOBAL ------------------ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: url('https://images.unsplash.com/photo-1542178243-bc113805f6c5?auto=format&fit=crop&w=1470&q=80') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            scroll-behavior: smooth;
+        }
+
+        /* ------------------ NAVBAR ------------------ */
+        nav {
+            width: 100%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 50px;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        nav .logo img {
+            height: 150px;
+            width: auto;
+        }
+
+        nav .menu a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 500;
+            position: relative;
+            transition: 0.3s;
+        }
+
+        nav .menu a::after {
+            content: '';
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #0ea5a4;
+            transition: width 0.3s;
+        }
+
+        nav .menu a:hover::after {
+            width: 100%;
+        }
+
+        nav .menu a:hover {
+            color: #0ea5a4;
+        }
+
+        /* ------------------ CONTAINER ------------------ */
+        .container {
+            padding: 60px 40px;
+            background-color: rgba(0, 0, 0, 0.6);
+            min-height: 100vh;
+        }
+
+        h1 {
+            text-align: left;
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+            color: #fff;
+        }
+
+        /* ------------------ EVENT GRID ------------------ */
+        .event-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 28px;
+        }
+
+        .event-card {
+            background-color: rgba(26, 26, 26, 0.9);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+            transition: transform 0.4s, box-shadow 0.4s;
+            position: relative;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .event-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.6s ease-out;
+        }
+
+        .event-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 8px 20px rgba(14, 165, 164, 0.4);
+            width: 350px;
+        }
+
+        .event-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            transition: transform 0.4s;
+        }
+
+        .event-card:hover .event-img {
+            transform: scale(1.05);
+        }
+
+        .event-content {
+            padding: 18px;
+        }
+
+        .event-title {
+            font-size: 1.25em;
+            margin: 10px 0 6px;
+            font-weight: 600;
+        }
+
+        .event-genre {
+            font-size: 0.95em;
+            color: #ccc;
+            margin-bottom: 12px;
+        }
+
+        .event-time {
+            font-size: 0.85em;
+            color: #aaa;
+        }
+
+        .event-date {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            background-color: #e74c3c;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.9em;
+            font-weight: bold;
+            text-align: center;
+            line-height: 1.2em;
+        }
+
+        .event-date span {
+            display: block;
+        }
+
+        /* ------------------ RESPONSIVE ------------------ */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            nav .menu a {
+                margin-left: 0;
+                font-size: 1rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .event-img {
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ---------- Navbar ---------- -->
+    <nav>
+        <div class="logo">
+            <img src="../images/logo.png" alt="Logo">
+        </div>
+        <div class="menu">
+            <a href="../index.html">Home</a>
+            <a href="https://kidney-sync-predictionsystem.streamlit.app/" target="_blank">Kidney Check</a>
+            <a href="./html/error.html">KidneyAI</a>
+            <a href="event_cal.html" class="active">Event Calendar</a>
+            <a href="aboutus.html">About</a>
+            <a href="login.html">Sign in</a>
+
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Upcoming Events in KidneySync</h1>
+
+        <div class="event-grid">
+
+            <!-- Event 1 -->
+            <div class="event-card">
+                <img class="event-img" src="../images/logo.png" alt="event1.png">
+                <div class="event-date"><span>OCT</span><span>10</span></div>
+                <div class="event-content">
+                    <div class="event-title">KidneySync Release</div>
+                    <div class="event-genre">Successfully Released</div>
+                    <div class="event-time">🕗 07.00</div>
+                </div>
+            </div>
+
+            <!-- Event 2 -->
+            <div class="event-card">
+                <img class="event-img" src="../images/logo.png" alt="event2.png">
+                <div class="event-date"><span>OCT</span><span>10</span></div>
+                <div class="event-content">
+                    <div class="event-title">Free Prediction</div>
+                    <div class="event-genre">CKD Prediction for Entire Day</div>
+                    <div class="event-time">🕗 07:30 · 00:00</div>
+                </div>
+            </div>
+
+            <!-- Event 3 -->
+            <div class="event-card">
+                <img class="event-img" src="../images/logo.png" alt="event2.png">
+                <div class="event-date"><span>OCT</span><span>11</span></div>
+                <div class="event-content">
+                    <div class="event-title">Free Prediction</div>
+                    <div class="event-genre">CKD Prediction for Entire Day</div>
+                    <div class="event-time">🕗 07:30 · 00:00</div>
+                </div>
+            </div>
+
+            <!-- Event 4 -->
+            <div class="event-card">
+                <img class="event-img" src="../images/logo.png" alt="event2.png">
+                <div class="event-date"><span>OCT</span><span>12</span></div>
+                <div class="event-content">
+                    <div class="event-title">Free Prediction</div>
+                    <div class="event-genre">CKD Prediction for Entire Day</div>
+                    <div class="event-time">🕗 07:30 · 00:00</div>
+                </div>
+            </div>
+
+            <!-- Event 5 -->
+            <div class="event-card">
+                <img class="event-img" src="../images/logo.png" alt="event2.png">
+                <div class="event-date"><span>OCT</span><span>13</span></div>
+                <div class="event-content">
+                    <div class="event-title">Free Prediction</div>
+                    <div class="event-genre">CKD Prediction for Entire Day</div>
+                    <div class="event-time">🕗 07:30 · 00:00</div>
+                </div>
+            </div>
+
+            <!-- Event 6 -->
+            <!--<div class="event-card">
+                <img class="event-img" src="https://via.placeholder.com/400x200?text=Fourplay" alt="Fourplay">
+                <div class="event-date"><span>OCT</span><span>14</span></div>
+                <div class="event-content">
+                    <div class="event-title">Fourplay</div>
+                    <div class="event-genre">Smooth Jazz</div>
+                    <div class="event-time">🕗 18:20 · 11:20</div>
+                </div>
+            </div>-->
+
+        </div>
+    </div>
+
+    <!-- ------------------ SCROLL ANIMATION ------------------ -->
+    <script>
+        const eventCards = document.querySelectorAll('.event-card');
+
+        const appearOptions = { threshold: 0.2, rootMargin: "0px 0px -50px 0px" };
+        const appearOnScroll = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            });
+        }, appearOptions);
+
+        eventCards.forEach(card => appearOnScroll.observe(card));
+    </script>
+</body>
+
+</html>
