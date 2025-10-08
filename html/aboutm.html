@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 
@@ -224,4 +225,232 @@
     </script>
 </body>
 
+=======
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - KidneySync (Mobile)</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #000, #1a1a1a);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        /* ---------- NAVBAR ---------- */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #000;
+            padding: 10px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar img {
+            height: 80px;
+            width: auto;
+        }
+
+        .menu-toggle {
+            font-size: 1.8rem;
+            color: #0ea5a4;
+            cursor: pointer;
+            border: none;
+            background: none;
+        }
+
+        .nav-links {
+            display: none;
+            flex-direction: column;
+            background: #0b0b0b;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .nav-links a {
+            padding: 12px;
+            display: block;
+            color: #fff;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #0ea5a4;
+        }
+
+        .nav-links.show {
+            display: flex;
+        }
+
+        /* ---------- HERO ---------- */
+        .hero {
+            text-align: center;
+            padding: 100px 20px 50px;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            color: #ccc;
+            line-height: 1.7;
+        }
+
+        /* ---------- ABOUT / MISSION ---------- */
+        section {
+            padding: 60px 25px;
+            text-align: center;
+        }
+
+        section h2 {
+            font-size: 1.8rem;
+            color: #0ea5a4;
+            margin-bottom: 20px;
+        }
+
+        section p {
+            font-size: 1rem;
+            color: #d1d1d1;
+            line-height: 1.7;
+        }
+
+        /* ---------- FOOTER ---------- */
+        footer {
+            text-align: center;
+            padding: 25px 20px;
+            background: #0b0b0b;
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+
+        footer span {
+            color: #0ea5a4;
+        }
+
+        /* ---------- ANIMATION ---------- */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        /* ---------- BACK TO DESKTOP ---------- */
+        .desktop-btn {
+            background: #0ea5a4;
+            color: #000;
+            font-weight: 600;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 40px;
+            margin-top: 25px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .desktop-btn:hover {
+            background: #00c0b0;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <header class="navbar">
+        <img src="../images/logo.png" alt="KidneySync Logo">
+        <button class="menu-toggle" id="menuBtn">☰</button>
+        <nav class="nav-links" id="navLinks">
+            <a href="../index.html">Home</a>
+            <a href="https://kidney-sync-predictionsystem.streamlit.app/" target="_blank">Kidney Check</a>
+            <a href="chat.html">KidneyAI</a>
+            <a href="event_cal.html">Event Calendar</a>
+            <a href="aboutus-mobile.html" class="active">About</a>
+            <a href="login.html">Sign in</a>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero fade">
+        <h1>About KidneySync</h1>
+        <p>KidneySync is an AI-powered healthcare solution revolutionizing kidney disease detection. We blend technology
+            and medical insight to empower patients and doctors globally.</p>
+    </section>
+
+    <!-- About -->
+    <section class="fade">
+        <h2>Our Story</h2>
+        <p>Founded by <b>Mr.X</b>, KidneySync’s vision is to save lives using AI technology. It detects kidney problems
+            early
+            and supports doctors with data-driven insights. Every feature is designed with care and precision because
+            every
+            life matters.</p>
+    </section>
+
+    <!-- Mission -->
+    <section class="fade">
+        <h2>Our Mission</h2>
+        <p>We aim to make kidney health monitoring accessible, intelligent, and proactive. With AI-driven insights,
+            KidneySync empowers both patients and healthcare providers to take smarter health decisions.</p>
+    </section>
+
+    <!-- Back to Desktop Button -->
+    <div style="text-align:center;">
+        <button class="desktop-btn" onclick="window.location.href='aboutus.html'">Switch to Desktop Site</button>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        © 2025 <span>KidneySync</span> | Designed & Developed by <span>Mr.X</span>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById("menuBtn").addEventListener("click", function () {
+            document.getElementById("navLinks").classList.toggle("show");
+        });
+    </script>
+</body>
+
+>>>>>>> a8639b3760338f04e388b5a2925157a1fad68693
 </html>

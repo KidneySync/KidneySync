@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!doctype html>
 <html lang="en">
 
@@ -341,4 +342,349 @@
     </script>
 </body>
 
+=======
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>KidneySync — Mobile</title>
+    <link rel="icon" type="image/x-icon" href="./images/ico.png">
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        html,
+        body {
+            height: 100%
+        }
+
+        body {
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+            background: linear-gradient(to bottom, #020617, #0ea5a4);
+            color: #fff;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* header */
+        header#siteHeader {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.85rem 1rem;
+            background: #000;
+            position: sticky;
+            top: 0;
+            z-index: 10000;
+            box-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        #siteHeader img {
+            width: 120px;
+            height: auto;
+            display: block
+        }
+
+        #menuBtn {
+            background: transparent;
+            border: 0;
+            color: #0ea5a4;
+            font-size: 1.6rem;
+            padding: 8px;
+            border-radius: 8px;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        /* NAV - fixed, hidden by transform */
+        nav#navMenu {
+            position: fixed;
+            left: 0;
+            right: 0;
+            /* top will be set dynamically (below header) */
+            background: #000;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            transform: translateY(-120%);
+            opacity: 0;
+            pointer-events: none;
+            transition: transform .22s ease, opacity .18s ease;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
+            max-height: calc(100vh - 56px);
+            overflow: auto;
+        }
+
+        nav#navMenu.show {
+            transform: translateY(0);
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        nav#navMenu a {
+            display: block;
+            padding: 12px 16px;
+            text-align: center;
+            text-decoration: none;
+            color: #0ea5a4;
+            font-weight: 600;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            font-size: 1rem;
+        }
+
+        nav#navMenu a:active,
+        nav#navMenu a:hover {
+            background: rgba(14, 165, 164, 0.06);
+        }
+
+        /* hero */
+        .hero {
+            padding: 4.5rem 1rem 3rem;
+            text-align: center;
+            background: url('./images/hero-bg.jpeg') center/cover no-repeat;
+            position: relative;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.45);
+            z-index: 0;
+        }
+
+        .hero .hero-content {
+            position: relative;
+            z-index: 2
+        }
+
+        .hero h1 {
+            font-family: 'Zen Dots', sans-serif;
+            font-size: 1.9rem;
+            margin-bottom: .5rem;
+        }
+
+        .hero-sub {
+            color: #9ef0dd;
+            letter-spacing: .18em;
+            margin-bottom: 1rem;
+            font-size: .85rem
+        }
+
+        .btn {
+            display: inline-block;
+            background: #0ea5a4;
+            color: #022;
+            padding: .8rem 1.4rem;
+            border-radius: 50px;
+            border: 0;
+            font-weight: 700;
+            cursor: pointer;
+            margin: .25rem;
+            font-size: 1rem;
+        }
+
+        /* blogs */
+        .blog-section {
+            padding: 1.6rem 1rem 3rem;
+            background: #0ea5a4;
+            color: #000;
+            text-align: center;
+        }
+
+        .blog-section h2 {
+            font-size: 1.35rem;
+            margin-bottom: 1rem;
+            font-weight: 800
+        }
+
+        .blog-card {
+            background: #fff;
+            color: #000;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+            text-align: left
+        }
+
+        .blog-card img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            display: block
+        }
+
+        .blog-content {
+            padding: 12px
+        }
+
+        .blog-title {
+            font-weight: 700;
+            margin-bottom: 6px
+        }
+
+        .blog-desc {
+            font-size: .95rem;
+            color: #222;
+            margin-bottom: 8px
+        }
+
+        .btn-view {
+            background: #4a9191;
+            color: #fff;
+            padding: .55rem .95rem;
+            border-radius: 8px;
+            border: 0;
+            cursor: pointer;
+            font-weight: 700
+        }
+
+        footer {
+            background: #000;
+            color: #0ea5a4;
+            text-align: center;
+            padding: 1.2rem;
+            font-size: .9rem
+        }
+
+        @media (max-width:420px) {
+            .hero h1 {
+                font-size: 1.6rem
+            }
+
+            #siteHeader img {
+                width: 100px
+            }
+
+            nav#navMenu a {
+                font-size: .95rem;
+                padding: 12px
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header id="siteHeader" role="banner">
+        <img src="./images/logo.png" alt="KidneySync Logo" id="siteLogo" onerror="this.style.display='none'">
+        <button id="menuBtn" aria-expanded="false" aria-controls="navMenu" aria-label="Toggle navigation">☰</button>
+    </header>
+
+    <nav id="navMenu" role="navigation" aria-label="Main navigation">
+        <a href="./index.html">Home</a>
+        <a href="https://kidney-sync-predictionsystem.streamlit.app/" target="_blank" rel="noopener">Kidney Check</a>
+        <a href="./html/chat.html">KidneyAI</a>
+        <a href="./html/event_cal.html">Event Calendar</a>
+        <a href="./html/aboutus.html">About</a>
+        <a href="./html/login.html">Sign In</a>
+    </nav>
+
+    <main>
+        <section class="hero" aria-labelledby="heroTitle">
+            <div class="hero-content">
+                <h1 id="heroTitle">Check Your Kidneys</h1>
+                <div class="hero-sub">ANYTIME — ANYWHERE</div>
+                <button class="btn"
+                    onclick="window.open('https://kidney-sync-predictionsystem.streamlit.app/','_blank')">Check
+                    Now</button>
+                <button class="btn" onclick="window.open('./html/chat.html','_blank')">KidneyAI</button>
+            </div>
+        </section>
+
+        <section class="blog-section" aria-labelledby="blogs-title">
+            <h2 id="blogs-title">Blogs About Kidney Disease</h2>
+
+            <article class="blog-card">
+                <img src="./images/kidney-health.png" alt="Kidney Health">
+                <div class="blog-content">
+                    <div class="blog-title">Kidney Health: This Herb May Replace Costly Cleansers</div>
+                    <div class="blog-desc">Nettle leaf may support kidney health. Studies show nettle tea can improve
+                        kidney function.</div>
+                    <button class="btn-view" onclick="window.open('http://tiny.cc/uqjt001','_blank')">View</button>
+                </div>
+            </article>
+
+            <article class="blog-card">
+                <img src="./images/cell-therapy.jpg" alt="Cell Therapy">
+                <div class="blog-content">
+                    <div class="blog-title">UC Davis Launches Cell Therapy Trial</div>
+                    <div class="blog-desc">New cell therapy aims to restore kidney function in chronic kidney disease
+                        patients.</div>
+                    <button class="btn-view" onclick="window.open('http://tiny.cc/0rjt001','_blank')">View</button>
+                </div>
+            </article>
+
+            <article class="blog-card">
+                <img src="./images/ai-tools.png" alt="AI Tools">
+                <div class="blog-content">
+                    <div class="blog-title">AI Tools Personalize Kidney Patient Treatment</div>
+                    <div class="blog-desc">Penn Medicine and Wharton develop datasets to enhance kidney treatment
+                        personalization.</div>
+                    <button class="btn-view" onclick="window.open('http://tiny.cc/2rjt001','_blank')">View</button>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <footer>© 2025 KidneySync</footer>
+
+    <script>
+        (function () {
+            const menuBtn = document.getElementById('menuBtn');
+            const nav = document.getElementById('navMenu');
+            const header = document.getElementById('siteHeader');
+
+            // Put nav below header (use header height to set top)
+            function positionNavBelowHeader() {
+                const h = header.offsetHeight || 56;
+                nav.style.top = h + 'px';
+                // ensure max-height accounts for header
+                nav.style.maxHeight = `calc(100vh - ${h}px)`;
+            }
+
+            // Run after DOM ready
+            document.addEventListener('DOMContentLoaded', positionNavBelowHeader);
+            window.addEventListener('resize', positionNavBelowHeader);
+
+            // Toggle menu
+            menuBtn.addEventListener('click', function (e) {
+                const isOpen = nav.classList.toggle('show');
+                menuBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            });
+
+            // Close when clicking a link
+            nav.querySelectorAll('a').forEach(a => {
+                a.addEventListener('click', () => {
+                    nav.classList.remove('show');
+                    menuBtn.setAttribute('aria-expanded', 'false');
+                });
+            });
+
+            // Close when clicking outside
+            document.addEventListener('click', (ev) => {
+                if (!nav.contains(ev.target) && !menuBtn.contains(ev.target) && nav.classList.contains('show')) {
+                    nav.classList.remove('show');
+                    menuBtn.setAttribute('aria-expanded', 'false');
+                }
+            });
+
+            // Close on Escape
+            document.addEventListener('keydown', (ev) => {
+                if (ev.key === 'Escape' && nav.classList.contains('show')) {
+                    nav.classList.remove('show');
+                    menuBtn.setAttribute('aria-expanded', 'false');
+                }
+            });
+        })();
+    </script>
+</body>
+
+>>>>>>> a8639b3760338f04e388b5a2925157a1fad68693
 </html>
