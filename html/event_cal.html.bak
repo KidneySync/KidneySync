@@ -8,7 +8,6 @@
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
     <style>
         /* ------------------ GLOBAL ------------------ */
@@ -26,62 +25,51 @@
             scroll-behavior: smooth;
         }
 
-        a {
-            text-decoration: none;
-        }
-
         /* ------------------ NAVBAR ------------------ */
-        header.navbar {
-            background: #0f0f0f;
-            padding: 12px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        nav {
+            width: 100%;
             position: sticky;
             top: 0;
             z-index: 1000;
-        }
-
-        header.navbar img {
-            height: 120px;
-            width: auto;
-            object-fit: contain;
-        }
-
-        nav.menu {
             display: flex;
-            gap: 16px;
+            justify-content: space-between;
             align-items: center;
+            padding: 14px 50px;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
         }
 
-        nav.menu a {
+        nav .logo img {
+            height: 150px;
+            width: auto;
+        }
+
+        nav .menu a {
             color: #fff;
+            text-decoration: none;
+            margin-left: 25px;
             font-weight: 500;
             position: relative;
             transition: 0.3s;
-            font-size: 1rem;
         }
 
-        nav.menu a::after {
+        nav .menu a::after {
             content: '';
             position: absolute;
             width: 0%;
             height: 2px;
-            bottom: -3px;
+            bottom: -4px;
             left: 0;
             background-color: #0ea5a4;
             transition: width 0.3s;
         }
 
-        nav.menu a:hover::after {
+        nav .menu a:hover::after {
             width: 100%;
         }
 
-        nav.menu a:hover {
-            color: #0ea5a4;
-        }
-
-        nav.menu a.active {
+        nav .menu a:hover {
             color: #0ea5a4;
         }
 
@@ -96,7 +84,7 @@
             text-align: left;
             margin-bottom: 40px;
             font-size: 2.5rem;
-            color: #0ea5a4;
+            color: #fff;
         }
 
         /* ------------------ EVENT GRID ------------------ */
@@ -181,37 +169,22 @@
 
         /* ------------------ RESPONSIVE ------------------ */
         @media (max-width: 768px) {
-            header.navbar {
+            nav {
                 flex-direction: column;
                 gap: 12px;
-                padding: 12px 20px;
             }
 
-            header.navbar img {
-                height: 100px;
-            }
-
-            nav.menu {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
-            nav.menu a {
-                font-size: 0.95rem;
-                margin: 4px 8px;
+            nav .menu a {
+                margin-left: 0;
+                font-size: 1rem;
             }
 
             h1 {
                 font-size: 2rem;
-                text-align: center;
             }
 
             .event-img {
                 height: 150px;
-            }
-
-            .event-card:hover {
-                width: 100%;
             }
         }
     </style>
@@ -219,22 +192,26 @@
 
 <body>
     <!-- ---------- Navbar ---------- -->
-    <header class="navbar">
-        <img src="../images/logo.png" alt="KidneySync Logo">
-        <nav class="menu">
+    <nav>
+        <div class="logo">
+            <img src="../images/logo.png" alt="Logo">
+        </div>
+        <div class="menu">
             <a href="../index.html">Home</a>
             <a href="https://kidney-sync-predictionsystem.streamlit.app/" target="_blank">Kidney Check</a>
             <a href="chat.html">KidneyAI</a>
-            <a href="events.html" class="active">Event Calendar</a>
+            <a href="event_cal.html" class="active">Event Calendar</a>
             <a href="aboutus.html">About</a>
             <a href="login.html">Sign in</a>
-        </nav>
-    </header>
 
-    <!-- ---------- Event Container ---------- -->
+        </div>
+    </nav>
+
     <div class="container">
         <h1>Upcoming Events in KidneySync</h1>
+
         <div class="event-grid">
+
             <!-- Event 1 -->
             <div class="event-card">
                 <img class="event-img" src="../images/logo.png" alt="event1.png">
@@ -259,7 +236,7 @@
 
             <!-- Event 3 -->
             <div class="event-card">
-                <img class="event-img" src="../images/logo.png" alt="event3.png">
+                <img class="event-img" src="../images/logo.png" alt="event2.png">
                 <div class="event-date"><span>OCT</span><span>11</span></div>
                 <div class="event-content">
                     <div class="event-title">Free Prediction</div>
@@ -270,7 +247,7 @@
 
             <!-- Event 4 -->
             <div class="event-card">
-                <img class="event-img" src="../images/logo.png" alt="event4.png">
+                <img class="event-img" src="../images/logo.png" alt="event2.png">
                 <div class="event-date"><span>OCT</span><span>12</span></div>
                 <div class="event-content">
                     <div class="event-title">Free Prediction</div>
@@ -281,7 +258,7 @@
 
             <!-- Event 5 -->
             <div class="event-card">
-                <img class="event-img" src="../images/logo.png" alt="event5.png">
+                <img class="event-img" src="../images/logo.png" alt="event2.png">
                 <div class="event-date"><span>OCT</span><span>13</span></div>
                 <div class="event-content">
                     <div class="event-title">Free Prediction</div>
@@ -289,12 +266,25 @@
                     <div class="event-time">🕗 07:30 · 00:00</div>
                 </div>
             </div>
+
+            <!-- Event 6 -->
+            <!--<div class="event-card">
+                <img class="event-img" src="https://via.placeholder.com/400x200?text=Fourplay" alt="Fourplay">
+                <div class="event-date"><span>OCT</span><span>14</span></div>
+                <div class="event-content">
+                    <div class="event-title">Fourplay</div>
+                    <div class="event-genre">Smooth Jazz</div>
+                    <div class="event-time">🕗 18:20 · 11:20</div>
+                </div>
+            </div>-->
+
         </div>
     </div>
 
-    <!-- ---------- Scroll Animation ---------- -->
+    <!-- ------------------ SCROLL ANIMATION ------------------ -->
     <script>
         const eventCards = document.querySelectorAll('.event-card');
+
         const appearOptions = { threshold: 0.2, rootMargin: "0px 0px -50px 0px" };
         const appearOnScroll = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
