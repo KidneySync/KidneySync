@@ -153,10 +153,98 @@
 
 <body>
     <!-- ---------- Navbar ---------- -->
+    <!-- ---------- Navbar ---------- -->
     <header class="navbar">
         <img src="../images/logo.png" alt="KidneySync Logo">
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+        <nav id="menu">
+            <a href="../index.html">Home</a>
+            <a href="chat.html">KidneyAI</a>
+            <a href="login.html">Sign in</a>
+        </nav>
     </header>
 
+    <style>
+        /* Navbar Styles */
+        .navbar {
+            width: 100%;
+            background: linear-gradient(135deg, #000000, #303235);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar img {
+            height: 60px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .menu-toggle {
+            font-size: 28px;
+            color: #fff;
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: none;
+            /* hidden on desktop */
+        }
+
+        nav#menu {
+            display: flex;
+            gap: 15px;
+        }
+
+        nav#menu a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav#menu a:hover {
+            color: #4aceef;
+        }
+
+        /* Mobile adjustments */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            nav#menu {
+                position: absolute;
+                top: 70px;
+                right: 20px;
+                flex-direction: column;
+                background: #000;
+                width: 150px;
+                display: none;
+                border-radius: 8px;
+                padding: 10px;
+            }
+
+            nav#menu a {
+                padding: 8px 0;
+            }
+        }
+    </style>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            if (menu.style.display === "flex") {
+                menu.style.display = "none";
+            } else {
+                menu.style.display = "flex";
+            }
+        }
+    </script>
+    <br>
     <!-- ---------- Create Account Box ---------- -->
     <div class="form-box">
         <h2>Create Account</h2>
@@ -191,7 +279,8 @@
             <br>
             <a href="login.html" class="btn" style="background-color: #14cacc; margin-top: 10px;">Sign In</a>
 
-            <p class="muted" style="margin-top: 15px;">By creating an account, you agree to our Terms & Privacy Policy.
+            <p class="muted" style="margin-top: 15px;">By creating an account, you agree to our Terms & Privacy
+                Policy.
             </p>
         </form>
     </div>
