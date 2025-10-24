@@ -1,41 +1,53 @@
 # 🧬 KidneySync — Empowering Kidney Health Through AI
 
+[![KidneySync Preview](./images/preview.png)](https://kidneysync.github.io/KidneySync/)
+
 > **Revolutionizing kidney disease detection and awareness.**  
 > *Check your kidneys — Anytime, Anywhere.*
-
-![KidneySync Preview](images/preview.png)
 
 ---
 
 ## 🌟 Overview
 
-**KidneySync** is an AI-powered web application designed to assist users in monitoring kidney health through predictive analysis and educational content.  
-It provides a **user-friendly, responsive interface** combined with a **Streamlit-based AI system** that predicts chronic kidney disease (CKD) using medical data inputs.
+**KidneySync** is an intelligent web platform that combines **AI prediction**, **OCR-powered report parsing**, and an **interactive chatbot** to make kidney health monitoring simple, fast, and accessible.
 
-Our mission is to make **preventive kidney health checks** accessible and intelligent through modern technology.
+Below is the prediction interface preview — click the image to open the live prediction demo.
+
+[![Prediction Interface — Click to Open](./images/preview-predict.png)](https://kidneysync.lovable.app/)
+
+---
+
+## 🚀 Live Links
+
+- **Project** — https://kidneysync.github.io/KidneySync/  
+- **Prediction Demo** — https://kidneysync.lovable.app/
 
 ---
 
 ## 🩺 Key Features
 
-| Category | Description |
-|-----------|--------------|
-| 🧠 **AI Kidney Prediction** | Machine Learning–based model (Random Forest Classifier) for CKD detection |
-| 📊 **Data Preprocessing** | Automated cleaning, encoding, and imputation of medical datasets |
-| 🧾 **Health Insights** | Blogs and research articles related to kidney disease |
-| 📅 **Event Calendar** | Tracks upcoming awareness events, seminars, and medical checkup camps |
-| 👥 **User Authentication** | Simple sign-in module for personalized sessions |
-| 💡 **Modern UI/UX** | Gradient interface, fluid animations, and fully responsive design |
+- **AI Kidney Prediction** — Machine Learning model (Random Forest / tuned classifier) to flag likely CKD cases.  
+- **OCR Medical Report Upload** — Upload PNG/JPG reports; values are automatically extracted via OCR (Tesseract/OpenCV pipeline).  
+- **Chatbot Assistant** — In-app conversational assistant that explains results and suggests next steps.  
+- **Manual Input Option** — For users who want to type values directly.  
+- **Educational Content** — Blog posts, event calendar, and resources for kidney health awareness.  
+- **Responsive & Accessible UI** — Desktop and mobile friendly with modern visuals.
 
 ---
 
 ## ⚙️ Tech Stack
 
-| Layer | Technologies |
-|-------|---------------|
-| **Frontend** | HTML5, CSS3, JavaScript |
-| **Styling & Fonts** | Google Fonts *(Poppins)*, Gradient Design |
-| **Backend** | Python, Streamlit |
-| **Machine Learning** | scikit-learn, pandas, numpy |
-| **Deployment** | GitHub Pages *(UI)*, Streamlit Cloud *(AI System)* |
+- **Frontend:** HTML5, CSS3, JavaScript  
+- **Backend / App:** Python, Streamlit  
+- **ML:** scikit-learn, pandas, numpy  
+- **OCR:** Tesseract OCR + OpenCV (data extraction & pre-processing)  
+- **Chatbot:** Streamlit chat UI + lightweight NLP model or API  
+- **Deployment:** GitHub Pages (UI), Streamlit Cloud / custom host (prediction & AI features)
 
+---
+
+## Code Owners
+
+- Mr.X Zer
+- Imesh S Abeysinghe
+- Next Gen Creators
