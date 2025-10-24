@@ -14,8 +14,6 @@
         });
     </script>
 
-
-
     <!-- Google Font for Zen Dots -->
     <link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet">
 
@@ -33,7 +31,6 @@
 
         body {
             font-family: 'Arial', sans-serif;
-            /* Default font for everything else */
             background: #0ea5a4;
             color: #fff;
         }
@@ -59,7 +56,7 @@
             pointer-events: none;
         }
 
-        /* flowing overlay as separate element */
+        /* flowing overlay */
         .flowing-bg {
             position: absolute;
             bottom: 0;
@@ -74,7 +71,7 @@
             pointer-events: none;
         }
 
-        /* NAV */
+        /* NAVBAR */
         .navbar {
             position: relative;
             z-index: 3;
@@ -85,6 +82,12 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
         }
 
         .logo img {
@@ -101,14 +104,35 @@
         }
 
         .nav-menu a {
-            color: #0ea5a4;
+            color: #ffffff;
             text-decoration: none;
             padding: 6px 8px;
             border-radius: 8px;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -3px;
+            width: 0;
+            height: 2px;
+            background: #0ea5a4;
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
         }
 
         .nav-menu a.active {
             color: #0ea5a4;
+        }
+
+        .nav-menu a.active::after {
+            width: 100%;
         }
 
         /* HERO CONTENT */
@@ -124,7 +148,6 @@
             text-align: center;
         }
 
-        /* Only the hero title uses Zen Dots */
         .hero-content h1 {
             font-family: 'Zen Dots', sans-serif;
             font-size: 4.2rem;
@@ -137,7 +160,6 @@
             margin-bottom: 2rem;
         }
 
-        /* Check now button */
         .cta {
             background: #0ea5a4;
             color: #022;
@@ -146,6 +168,7 @@
             border: 0;
             cursor: pointer;
             font-weight: 100;
+            margin: 6px;
         }
 
         /* BLOG SECTION */
@@ -168,7 +191,6 @@
             color: #071026;
             border-radius: 12px;
             overflow: hidden;
-
         }
 
         .blog-image {
@@ -185,14 +207,6 @@
             height: 100%;
             object-fit: cover;
             display: block;
-        }
-
-        .blog-image .fallback {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            display: none;
         }
 
         .blog-content {
@@ -218,7 +232,7 @@
             cursor: pointer;
         }
 
-        /* small screens */
+        /* RESPONSIVE */
         @media (max-width:600px) {
             .hero-content h1 {
                 font-size: 1.9rem;
@@ -239,7 +253,7 @@
         <div class="flowing-bg" aria-hidden="true"></div>
 
         <header class="navbar" role="banner">
-            <div class="logo">
+            <a href="./index.html" class="logo" aria-label="Go to Home">
                 <img id="logoImg" src="./images/logo.png" alt="KidneySync logo"
                     onerror="this.style.display='none'; document.getElementById('logoFallback').style.display='block'">
                 <svg id="logoFallback" class="logo-fallback" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"
@@ -254,13 +268,12 @@
                     <text x="50" y="56" text-anchor="middle" fill="#fff" font-size="44" font-family="Segoe UI,Roboto"
                         font-weight="700">KS</text>
                 </svg>
-            </div>
+            </a>
 
             <nav aria-label="main">
                 <ul class="nav-menu">
                     <li><a href="./index.html" class="active">Home</a></li>
-                    <li><a href="https://bit.ly/KidneySync" target="_blank">Kidney Check</a>
-                    </li>
+                    <li><a href="https://bit.ly/KidneySync" target="_blank">Kidney Check</a></li>
                     <li><a href="./html/chat.html">KidneyAI</a></li>
                     <li><a href="./html/event_cal.html">Event Calendar</a></li>
                     <li><a href="./html/aboutus.html">About</a></li>
@@ -272,10 +285,8 @@
         <div class="hero-content">
             <h1>Check Your Kidneys</h1>
             <div class="hero-sub">ANYTIME — ANYWHERE</div>
-            <button class="cta" onclick="window.open('https://bit.ly/KidneySync', '_blank')">Check
-                Now</button><br>
+            <button class="cta" onclick="window.open('https://bit.ly/KidneySync', '_blank')">Check Now</button><br>
             <button class="cta" onclick="window.open('./html/chat.html', '_blank')">KidneyAI</button>
-
         </div>
     </section>
 
@@ -344,7 +355,8 @@
         </div>
     </section>
 
-    <footer style="text-align:center;padding:2rem;color: #0ea5a4;background: #030303;margin-top:2rem">© 2025 KidneySync
+    <footer style="text-align:center;padding:2rem;color:#0ea5a4;background:#030303;margin-top:2rem">
+        © 2025 KidneySync
     </footer>
 
 </body>
