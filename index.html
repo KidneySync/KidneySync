@@ -285,7 +285,101 @@
         <div class="hero-content">
             <h1>Check Your Kidneys</h1>
             <div class="hero-sub">ANYTIME — ANYWHERE</div>
-            <button class="cta" onclick="window.open('https://bit.ly/KidneySync', '_blank')">Check Now</button><br>
+            <!-- Check Now Button -->
+<button class="cta" onclick="openModal()">Check Now</button><br>
+
+<!-- Popup Modal -->
+<div id="optionModal" class="modal">
+  <div class="modal-content">
+    <h3>Select a Prediction System</h3>
+    <button class="cta" onclick="window.open('./html/smart.html', '_blank')">Option 1: Smart Prediction System</button><br>
+    <button class="cta" onclick="window.open('https://bit.ly/KidneySync', '_blank')">Option 2: Normal Prediction System</button><br>
+    <button class="cta" disabled style="opacity:0.6;cursor:not-allowed;">Option 3: Coming Soon...</button><br><br>
+    <button class="cta close-btn" onclick="closeModal()">Close</button>
+  </div>
+</div>
+
+<!-- Modal Styling -->
+<style>
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(3, 7, 18, 0.65);
+  backdrop-filter: blur(6px);
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.modal-content {
+  background: #0ea5a4;
+  color: #ffffff;
+  padding: 32px 24px;
+  border-radius: 20px;
+  text-align: center;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 0 25px rgba(0,0,0,0.3);
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-content h3 {
+  margin-bottom: 18px;
+  color: #022;
+  font-family: 'Zen Dots', sans-serif;
+  letter-spacing: 1px;
+}
+
+.cta {
+  background: #fff;
+  color: #022;
+  padding: .8rem 1.6rem;
+  border-radius: 50px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 6px 0;
+  width: 100%;
+  transition: all 0.2s ease;
+}
+
+.cta:hover {
+  background: #dff8f6;
+}
+
+.close-btn {
+  background: #022;
+  color: #fff;
+  width: auto;
+  padding: .6rem 1.2rem;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: scale(0.9);}
+  to {opacity: 1; transform: scale(1);}
+}
+</style>
+
+<!-- Modal Script -->
+<script>
+function openModal() {
+  document.getElementById("optionModal").style.display = "flex";
+}
+function closeModal() {
+  document.getElementById("optionModal").style.display = "none";
+}
+window.onclick = function(event) {
+  const modal = document.getElementById("optionModal");
+  if (event.target === modal) {
+    closeModal();
+  }
+};
+</script>
             <button class="cta" onclick="window.open('./html/chat.html', '_blank')">KidneyAI</button>
         </div>
     </section>
