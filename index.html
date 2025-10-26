@@ -160,16 +160,33 @@
             margin-bottom: 2rem;
         }
 
-        .cta {
-            background: #0ea5a4;
-            color: #022;
-            padding: .84rem 2rem;
-            border-radius: 60px;
-            border: 0;
-            cursor: pointer;
-            font-weight: 100;
-            margin: 6px;
-        }
+        /* CTA Button - unified style */
+.cta {
+    background: #fff;
+    color: #022;
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    margin: 6px 0;
+    width: 100%; /* Make all buttons full width inside container */
+    max-width: 300px; /* Optional: limit max size for hero buttons */
+    transition: all 0.2s ease;
+}
+
+.cta:hover {
+    background: #dff8f6;
+}
+
+/* Close button - smaller width */
+.close-btn {
+    background: #022;
+    color: #fff;
+    width: auto;
+    padding: 0.6rem 1.2rem;
+    border-radius: 50px;
+}
 
         /* BLOG SECTION */
         .blog-section {
