@@ -99,6 +99,10 @@
             cursor: pointer;
             border-radius: 8px;
             z-index: 1000;
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
         }
 
         .nav-menu {
@@ -252,7 +256,6 @@
                 opacity: 0;
                 transform: scale(0.9);
             }
-
             to {
                 opacity: 1;
                 transform: scale(1);
@@ -681,12 +684,9 @@
     <div id="optionModal" class="modal">
         <div class="modal-content">
             <h3>Select a Prediction System</h3>
-            <button class="cta" onclick="window.open('https://kidneysync.lovable.app/', '_blank')">Option 1: Smart
-                Prediction System</button><br>
-            <button class="cta" onclick="window.open('https://bit.ly/KidneySync', '_blank')">Option 2: Normal Prediction
-                System</button><br>
-            <button class="cta" disabled style="opacity:0.6;cursor:not-allowed;">Option 3: Coming
-                Soon...</button><br><br>
+            <button class="cta" onclick="window.open('https://kidneysync.lovable.app/', '_blank')">Option 1: Smart Prediction System</button><br>
+            <button class="cta" onclick="window.open('https://bit.ly/KidneySync', '_blank')">Option 2: Normal Prediction System</button><br>
+            <button class="cta" disabled style="opacity:0.6;cursor:not-allowed;">Option 3: Coming Soon...</button><br><br>
             <button class="cta close-btn" onclick="closeModal()">Close</button>
         </div>
     </div>
@@ -748,8 +748,7 @@
                 <div class="step-icon">◆</div>
                 <div class="step-content">
                     <div class="step-title">Step 6:</div>
-                    <div class="step-desc">Click the "Analyze" button to view your personalized kidney health results.
-                    </div>
+                    <div class="step-desc">Click the "Analyze" button to view your personalized kidney health results.</div>
                 </div>
             </div>
         </div>
@@ -762,29 +761,25 @@
             <div class="feature-card">
                 <div class="feature-icon">⚙️</div>
                 <div class="feature-title">AI-based OCR reads lab reports instantly</div>
-                <div class="feature-desc">Advanced optical character recognition technology extracts data from your
-                    medical reports with high accuracy.</div>
+                <div class="feature-desc">Advanced optical character recognition technology extracts data from your medical reports with high accuracy.</div>
             </div>
 
             <div class="feature-card">
                 <div class="feature-icon">🩺</div>
                 <div class="feature-title">Personalized kidney health insights</div>
-                <div class="feature-desc">Get tailored recommendations and analysis based on your specific test results
-                    and health profile.</div>
+                <div class="feature-desc">Get tailored recommendations and analysis based on your specific test results and health profile.</div>
             </div>
 
             <div class="feature-card">
                 <div class="feature-icon">📊</div>
                 <div class="feature-title">Easy-to-understand results dashboard</div>
-                <div class="feature-desc">View your kidney health status through intuitive visualizations and clear
-                    explanations.</div>
+                <div class="feature-desc">View your kidney health status through intuitive visualizations and clear explanations.</div>
             </div>
 
             <div class="feature-card">
                 <div class="feature-icon">📱</div>
                 <div class="feature-title">Mobile-friendly & privacy-protected</div>
-                <div class="feature-desc">Access from any device with complete data security and HIPAA-compliant privacy
-                    measures.</div>
+                <div class="feature-desc">Access from any device with complete data security and HIPAA-compliant privacy measures.</div>
             </div>
         </div>
     </section>
@@ -861,12 +856,12 @@
         function openModal() {
             document.getElementById("optionModal").style.display = "flex";
         }
-
+        
         function closeModal() {
             document.getElementById("optionModal").style.display = "none";
         }
-
-        window.onclick = function (event) {
+        
+        window.onclick = function(event) {
             const modal = document.getElementById("optionModal");
             if (event.target === modal) {
                 closeModal();
@@ -892,10 +887,10 @@
         document.addEventListener('click', (e) => {
             const navMenu = document.getElementById('navMenu');
             const menuToggle = document.querySelector('.menu-toggle');
-
-            if (window.innerWidth <= 768 &&
-                navMenu.classList.contains('active') &&
-                !navMenu.contains(e.target) &&
+            
+            if (window.innerWidth <= 768 && 
+                navMenu.classList.contains('active') && 
+                !navMenu.contains(e.target) && 
                 !menuToggle.contains(e.target)) {
                 navMenu.classList.remove('active');
             }
