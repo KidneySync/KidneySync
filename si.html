@@ -1,76 +1,909 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Error 404 - Looks Like You Are Lost</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>KidneySync – Save Lives</title>
+    <link rel="icon" type="image/x-icon" href="./images/ico.png">
+
+    <!-- Google Font for Zen Dots -->
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet">
+
     <style>
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+        }
+
+        html,
+        body {
+            height: 100%;
         }
 
         body {
-            height: 100vh;
-            background: radial-gradient(circle at top, #000000, #000000, #000000);
+            font-family: 'Arial', sans-serif;
+            background: #0d0517;
             color: #fff;
+        }
+
+        /* HERO */
+        .hero-section {
+            position: relative;
+            min-height: 60vh;
+            background-image: url('./images/hero-bg.jpeg');
+            background-size: cover;
+            background-position: center;
             display: flex;
-            justify-content: center;
-            align-items: center;
             flex-direction: column;
-            text-align: center;
         }
 
-        h1 {
-            font-size: 120px;
-            font-weight: 800;
-            margin-bottom: 10px;
-            background: linear-gradient(90deg, #0ea5a4, #0072ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .hero-section::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(3, 7, 18, 0.35), rgba(3, 7, 18, 0.5));
+            z-index: 1;
+            pointer-events: none;
         }
 
-        h2 {
-            font-size: 28px;
-            margin-bottom: 15px;
-            color: #ccc;
+        .flowing-bg {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 45%;
+            height: 60%;
+            background-image: url('./images/flowing-bg.png');
+            background-size: contain;
+            background-position: bottom right;
+            background-repeat: no-repeat;
+            z-index: 2;
+            pointer-events: none;
         }
 
-        p {
-            font-size: 16px;
-            color: #aaa;
-            max-width: 400px;
-            margin-bottom: 30px;
+        /* NAVBAR */
+        .navbar {
+            position: relative;
+            z-index: 3;
+            width: 100%;
+            max-width: 1200px;
+            margin: 1rem auto;
+            padding: 0 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
 
-        a {
+        .logo {
+            display: flex;
+            align-items: center;
             text-decoration: none;
-            color: #fff;
-            background: linear-gradient(90deg, #0072ff, #0ea5a4);
-            padding: 12px 25px;
-            border-radius: 8px;
-            font-weight: 500;
-            transition: 0.3s;
         }
 
-        a:hover {
-            background: linear-gradient(90deg, #0ea5a4, #0072ff);
+        .logo img {
+            width: 300px;
+            height: 300px;
+            object-fit: contain;
+            display: block;
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            background: #0ea5a4;
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            border-radius: 8px;
+            z-index: 1000;
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 12px;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: #ffffff;
+            text-decoration: none;
+            padding: 6px 8px;
+            border-radius: 8px;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -3px;
+            width: 0;
+            height: 2px;
+            background: #0ea5a4;
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .nav-menu a.active {
+            color: #0ea5a4;
+        }
+
+        .nav-menu a.active::after {
+            width: 100%;
+        }
+
+        /* Home icon button styling */
+        .home-icon-btn {
+            background: #0ea5a4 !important;
+            color: #fff !important;
+            padding: 8px 12px !important;
+            border-radius: 8px !important;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 40px;
+            transition: all 0.3s ease;
+        }
+
+        .home-icon-btn:hover {
+            background: #0c8d8c !important;
             transform: scale(1.05);
         }
 
-        .glow {
-            text-shadow: 0 0 10px #0ea5a4, 0 0 20px #0072ff;
+        .home-icon-btn::after {
+            display: none !important;
+        }
+
+        /* HERO CONTENT */
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem 1rem;
+            margin-top: 10vh;
+            text-align: center;
+        }
+
+        .hero-content h1 {
+            font-family: 'Zen Dots', sans-serif;
+            font-size: 4.2rem;
+            margin-bottom: .5rem;
+        }
+
+        .hero-sub {
+            color: #9ef0dd;
+            letter-spacing: .24em;
+            margin-bottom: 2rem;
+        }
+
+        .cta {
+            background: #00c3c2;
+            color: #022;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 6px 0;
+            width: 100%;
+            max-width: 300px;
+            transition: all 0.2s ease;
+        }
+
+        .cta:hover {
+            background: #dff8f6;
+        }
+
+        .close-btn {
+            background: #022;
+            color: #fff;
+            width: auto;
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+        }
+
+        /* MODAL */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(3, 7, 18, 0.65);
+            backdrop-filter: blur(6px);
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .modal-content {
+            background: #0ea5a4;
+            color: #ffffff;
+            padding: 32px 24px;
+            border-radius: 20px;
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content h3 {
+            margin-bottom: 18px;
+            color: #022;
+            font-family: 'Zen Dots', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* STEP BY STEP GUIDE SECTION */
+        .guide-section {
+            max-width: 900px;
+            margin: 3rem auto 2rem;
+            padding: 2.5rem 2rem;
+            background: linear-gradient(135deg, #0a2540 0%, #041c32 100%);
+            border-radius: 20px;
+            border: 2px solid #0ea5a4;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .guide-section h2 {
+            font-family: 'Zen Dots', sans-serif;
+            color: #0ea5a4;
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .guide-subtitle {
+            text-align: center;
+            color: #9ef0dd;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .guide-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .step-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(14, 165, 164, 0.1);
+            border-radius: 12px;
+            border-left: 4px solid #0ea5a4;
+            transition: all 0.3s ease;
+        }
+
+        .step-item:hover {
+            background: rgba(14, 165, 164, 0.2);
+            transform: translateX(5px);
+        }
+
+        .step-icon {
+            font-size: 1.5rem;
+            min-width: 30px;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-title {
+            color: #0ea5a4;
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+        }
+
+        .step-desc {
+            color: #b0e0e6;
+            line-height: 1.5;
+        }
+
+        .step-reports {
+            margin-top: 0.5rem;
+            padding-left: 1rem;
+        }
+
+        .step-reports div {
+            margin: 0.3rem 0;
+        }
+
+        .wait-note {
+            text-align: center;
+            font-style: italic;
+            color: #9ef0dd;
+            margin-top: 1rem;
+        }
+
+        /* FEATURES SECTION */
+        .features-section {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+
+        .features-section h2 {
+            font-family: 'Zen Dots', sans-serif;
+            color: #ffffff;
+            font-size: 2.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .features-section h2::before {
+            content: "💡 ";
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            padding: 2rem 1.5rem;
+            border-radius: 16px;
+            border: 2px solid #0ea5a4;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(14, 165, 164, 0.3);
+            border-color: #9ef0dd;
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-title {
+            color: #fff;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .feature-desc {
+            color: #b0e0e6;
+            line-height: 1.6;
+        }
+
+        /* BLOG SECTION */
+        .blog-section {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 1rem;
+            position: relative;
+            z-index: 4;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+        }
+
+        .blog-card {
+            background: #0ea5a4;
+            color: #071026;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .blog-image {
+            height: 180px;
+            position: relative;
+            background: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .blog-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .blog-content {
+            padding: 14px;
+        }
+
+        .blog-title {
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #000;
+        }
+
+        .blog-desc {
+            color: #000000;
+            margin-bottom: 10px;
+        }
+
+        .btn-view {
+            background: #4a9191;
+            color: #000000;
+            padding: .5rem .9rem;
+            border-radius: 8px;
+            border: 0;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .btn-view:hover {
+            background: #357272;
+        }
+
+        /* RESPONSIVE - TABLET */
+        @media (max-width: 1024px) {
+            .logo img {
+                width: 200px;
+                height: 200px;
+            }
+
+            .nav-menu {
+                gap: 8px;
+            }
+
+            .nav-menu a {
+                font-size: 0.9rem;
+                padding: 5px 6px;
+            }
+        }
+
+        /* RESPONSIVE - MOBILE */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .logo img {
+                width: 150px;
+                height: 150px;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background: linear-gradient(135deg, #0a2540 0%, #041c32 100%);
+                flex-direction: column;
+                padding: 5rem 2rem 2rem;
+                gap: 0;
+                transition: right 0.3s ease;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+                z-index: 999;
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .nav-menu li {
+                width: 100%;
+                border-bottom: 1px solid rgba(14, 165, 164, 0.3);
+            }
+
+            .nav-menu a {
+                display: block;
+                padding: 1rem;
+                width: 100%;
+                font-size: 1.1rem;
+            }
+
+            .home-icon-btn {
+                justify-content: flex-start !important;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content {
+                margin-top: 5vh;
+            }
+
+            .guide-section {
+                padding: 1.5rem 1rem;
+                margin: 2rem 1rem;
+            }
+
+            .guide-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .guide-subtitle {
+                font-size: 1rem;
+            }
+
+            .features-section h2 {
+                font-size: 2rem;
+            }
+
+            .feature-card {
+                padding: 1.5rem 1rem;
+            }
+
+            .flowing-bg {
+                width: 60%;
+                height: 40%;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero-content h1 {
+                font-size: 1.9rem;
+            }
+
+            .hero-sub {
+                font-size: 0.8rem;
+            }
+
+            .flowing-bg {
+                width: 70%;
+                height: 28%;
+                right: -6%;
+            }
+
+            .guide-section h2 {
+                font-size: 1.3rem;
+            }
+
+            .step-item {
+                flex-direction: column;
+            }
+
+            .features-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .feature-icon {
+                font-size: 2rem;
+            }
+
+            .blog-section h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .logo img {
+                width: 120px;
+                height: 120px;
+            }
+
+            .hero-content h1 {
+                font-size: 1.5rem;
+            }
+
+            .cta {
+                padding: 0.7rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            .nav-menu {
+                width: 80%;
+            }
         }
     </style>
 </head>
 
 <body>
-    <h1 class="glow">404</h1>
-    <h2>Looks Like You Are Lost</h2>
-    <p>The server did not to respond. Please check your connection or try again later.</p>
-    <a href="../index.html">Try Again</a>
+
+    <section class="hero-section">
+        <div class="flowing-bg" aria-hidden="true"></div>
+
+        <header class="navbar" role="banner">
+            <a href="./index.html" class="logo" aria-label="Go to Home">
+                <img id="logoImg" src="./images/logo.png" alt="KidneySync logo"
+                    onerror="this.style.display='none'; document.getElementById('logoFallback').style.display='block'">
+                <svg id="logoFallback" class="logo-fallback" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"
+                    role="img" aria-label="logo fallback" style="display:none">
+                    <defs>
+                        <linearGradient id="lg" x1="0" x2="1">
+                            <stop offset="0" stop-color="#06b6a4" />
+                            <stop offset="1" stop-color="#0891b2" />
+                        </linearGradient>
+                    </defs>
+                    <rect rx="16" width="100" height="100" fill="url(#lg)"></rect>
+                    <text x="50" y="56" text-anchor="middle" fill="#fff" font-size="44" font-family="Segoe UI,Roboto"
+                        font-weight="700">KS</text>
+                </svg>
+            </a>
+
+            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">
+                ☰
+            </button>
+
+            <nav aria-label="main">
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="./index.html" class="active">🏠 Home</a></li>
+                    <li><a href="https://kidneysync.lovable.app" target="_blank">🔎 පරීක්ෂා කරාන්න</a></li>
+                    <li><a href="./html/chat.html">🤖 KidneyAI චැට්බොට්</a></li>
+                    <li><a href="./html/event_cal.html">📆 කැලැන්ඩරය</a></li>
+                    <li><a href="./html/aboutus.html">👨 අපි ගැන</a></li>
+                    <li><a href="./html/login.html">💾 Sign in</a></li>
+                    <li><a href="./si.html" class="home-icon-btn" aria-label="Sinhala">En</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="hero-content">
+            <h1>Check Your Kidneys</h1>
+            <div class="hero-sub">සැම විටම – සැම තැනම</div>
+            <button class="cta" onclick="openModal()">පරීක්ෂා කරන්න</button><br>
+            <button class="cta" onclick="window.open('./html/chat.html', '_blank')">KidneyAI</button>
+        </div>
+    </section>
+
+    <!-- Check Now Modal -->
+    <div id="optionModal" class="modal">
+        <div class="modal-content">
+            <h3>Select a Prediction System</h3>
+            <button class="cta" onclick="window.open('https://kidneysync.lovable.app/', '_blank')">තේරීම 1: ස්මාට්
+                අනාවැකි පද්ධතිය</button><br>
+            <button class="cta" onclick="window.open('https://bit.ly/KidneySync', '_blank')">තේරීම 2: සාමාන්‍ය අනාවැකි
+                පද්ධතිය</button><br>
+            <button class="cta" disabled style="opacity:0.6;cursor:not-allowed;">තේරීම 3: ලඟදීම...</button><br><br>
+            <button class="cta close-btn" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <!-- STEP BY STEP GUIDE SECTION -->
+    <section class="guide-section">
+        <h2>🩺 ඔබගේ වකුගඩු සෞඛ්‍ය ගැන KidneySync හරහා පරීක්ෂා කර බලන්නේ කෙසේද?</h2>
+        <p class="guide-subtitle">පහත පියවර අනුගමනය කරන්න:</p>
+
+        <div class="guide-steps">
+            <div class="step-item">
+                <div class="step-icon">◆</div>
+                <div class="step-content">
+                    <div class="step-title">පියවර අංක 1:</div>
+                    <div class="step-desc">KidneySync වෙබ් අඩවිය වෙත යන්න.</div>
+                </div>
+            </div>
+
+            <div class="step-item">
+                <div class="step-icon">◆</div>
+                <div class="step-content">
+                    <div class="step-title">පියවර අංක 2:</div>
+                    <div class="step-desc">"පරීක්ෂා කරන්න" බොත්තම ඔබන්න.</div>
+                </div>
+            </div>
+
+            <div class="step-item">
+                <div class="step-icon">◆</div>
+                <div class="step-content">
+                    <div class="step-title">පියවර අංක 3:</div>
+                    <div class="step-desc"><strong>තෝරාගැනීම 1</strong> යන්න තෝරාගන්න.</div>
+                </div>
+            </div>
+
+            <div class="step-item">
+                <div class="step-icon">◆</div>
+                <div class="step-content">
+                    <div class="step-title">පියවර අංක 4:</div>
+                    <div class="step-desc">ඔබ ලබාගත් පහත දෑ උඩුගත කරන්න:</div>
+                    <div class="step-reports">
+                        <div>🧪 Blood Urea Test (රුධිරගත යූරියා පරීක්ෂාව)</div>
+                        <div>🩸 Blood Glucose Test (රුධිරගත සීනි පරීක්ෂාව)</div>
+                        <div>💧 Urine Analysis Test (මූත්‍රා විශ්ලේෂණ පරීක්ෂාව)</div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="wait-note">AI OCR පද්ධතිය මගින් ඔබගේ පරීක්ෂණ පරීක්ෂා කරන තුරු රැඳීසිටින්න.</p>
+
+            <div class="step-item">
+                <div class="step-icon">◆</div>
+                <div class="step-content">
+                    <div class="step-title">සියවර අංක 5:</div>
+                    <div class="step-desc">ඔබගේ <strong>Blood Pressure (mmHg) (රුධිර පීඩනය)</strong> සටහන් කරන්න.</div>
+                </div>
+            </div>
+
+            <div class="step-item">
+                <div class="step-icon">◆</div>
+                <div class="step-content">
+                    <div class="step-title">පියවර අංක 6:</div>
+                    <div class="step-desc">"Analyze" බොත්තම ඔබා ඔබගේ වකුගඩු තත්වය පරීක්ෂා කරගන්න.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES SECTION -->
+    <section class="features-section">
+        <h2>Features</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">⚙️</div>
+                <div class="feature-title">AI පාදක කරගත් OCR තාක්ෂණය යොදාගැනීම</div>
+                <div class="feature-desc">උසස් දෘශ්‍ය අක්ෂර හඳුනාගැනීමේ තාක්ෂණය ඉහළ නිරවද්‍යතාවයකින් ඔබේ වෛද්‍ය
+                    වාර්තාවලින් දත්ත උපුටාගනී.</div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🩺</div>
+                <div class="feature-title">පුද්ගලාරෝපිත වකුගඩු සෞඛ්‍ය තීක්ෂණ බුද්ධිය</div>
+                <div class="feature-desc">ඔබේ විශේෂිත පරීක්ෂණ ප්‍රතිඵල සහ සෞඛ්‍ය පැතිකඩ මත පදනම්ව අභිරුචි නිර්දේශ සහ
+                    විශ්ලේෂණ ලබා ගන්න.</div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <div class="feature-title">තේරුම් ගැනීමට පහසු ප්‍රතිඵල පුවරුව</div>
+                <div class="feature-desc">ඔබේ වකුගඩු සෞඛ්‍ය තත්වය තේරුම් ගැනීමට පහසු දෘශ්‍යීකරණ සහ පැහැදිලි විස්තර මඟින්
+                    බලන්න.</div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📱</div>
+                <div class="feature-title">ජංගම හිතකාමී හා පෞද්ගලිකත්වය ආරක්ෂා කොට ඇත</div>
+                <div class="feature-desc">සම්පූර්ණ දත්ත ආරක්ෂාව හා HIPPA අනුකූල පෞද්ගලිකත්වය සහිත ඕනෑම උපාංගයකින්
+                    පිවිසිය හැක.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOG SECTION -->
+    <section class="blog-section" aria-labelledby="blogs-title">
+        <h2 id="blogs-title" style="color:#ffffff;margin-bottom:12px">වකුගඩු රෝග පිළිබඳව ඇති ලිපි</h2>
+
+        <div class="blog-grid">
+            <article class="blog-card">
+                <div class="blog-image">
+                    <img src="./images/kidney-health.png" alt="kidney health"
+                        onerror="this.style.display='none'; this.parentElement.querySelector('.fallback').style.display='block'"
+                        onload="this.parentElement.querySelector('.fallback').style.display='none'">
+                    <svg class="fallback" viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg" style="display:none">
+                        <rect width="100%" height="100%" fill="#fb923c" />
+                        <text x="16" y="96" fill="#fff" font-size="18" font-family="Segoe UI, Roboto">Kidney Health -
+                            Nettle leaf study</text>
+                    </svg>
+                </div>
+                <div class="blog-content">
+                    <div class="blog-title">Kidney Health: This herb may replace costly kidney cleansers</div>
+                    <div class="blog-desc">Nettle leaf may support kidney health. A study showed nettle tea improved
+                        kidney function.</div>
+                    <button class="btn-view" onclick="window.open('http://tiny.cc/uqjt001', '_blank')">View</button>
+                </div>
+            </article>
+
+            <article class="blog-card">
+                <div class="blog-image">
+                    <img src="./images/cell-therapy.jpg" alt="cell therapy"
+                        onerror="this.style.display='none'; this.parentElement.querySelector('.fallback').style.display='block'"
+                        onload="this.parentElement.querySelector('.fallback').style.display='none'">
+                    <svg class="fallback" viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg" style="display:none">
+                        <rect width="100%" height="100%" fill="#60a5fa" />
+                        <text x="16" y="96" fill="#fff" font-size="18" font-family="Segoe UI, Roboto">UC Davis cell
+                            therapy trial</text>
+                    </svg>
+                </div>
+                <div class="blog-content">
+                    <div class="blog-title">UC Davis launches cell therapy trial for chronic kidney disease</div>
+                    <div class="blog-desc">Novel therapy could restore kidney function in some patients.</div>
+                    <button class="btn-view" onclick="window.open('http://tiny.cc/0rjt001', '_blank')">View</button>
+                </div>
+            </article>
+
+            <article class="blog-card">
+                <div class="blog-image">
+                    <img src="./images/ai-tools.png" alt="ai tools"
+                        onerror="this.style.display='none'; this.parentElement.querySelector('.fallback').style.display='block'"
+                        onload="this.parentElement.querySelector('.fallback').style.display='none'">
+                    <svg class="fallback" viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg" style="display:none">
+                        <rect width="100%" height="100%" fill="#a78bfa" />
+                        <text x="16" y="96" fill="#fff" font-size="18" font-family="Segoe UI, Roboto">AI tools
+                            personalize kidney care</text>
+                    </svg>
+                </div>
+                <div class="blog-content">
+                    <div class="blog-title">Penn AI tools and datasets personalize kidney patient treatments</div>
+                    <div class="blog-desc">Penn Medicine and Wharton create CellSpectra and SISKA to improve treatments.
+                    </div>
+                    <button class="btn-view" onclick="window.open('http://tiny.cc/2rjt001', '_blank')">View</button>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <footer style="text-align:center;padding:2rem;color:#0ea5a4;background:#030303;margin-top:2rem">
+        © 2025 KidneySync
+    </footer>
+
+    <script>
+        // Modal functions
+        function openModal() {
+            document.getElementById("optionModal").style.display = "flex";
+        }
+
+        function closeModal() {
+            document.getElementById("optionModal").style.display = "none";
+        }
+
+        window.onclick = function (event) {
+            const modal = document.getElementById("optionModal");
+            if (event.target === modal) {
+                closeModal();
+            }
+        };
+
+        // Mobile menu toggle
+        function toggleMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        }
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    document.getElementById('navMenu').classList.remove('active');
+                }
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            const navMenu = document.getElementById('navMenu');
+            const menuToggle = document.querySelector('.menu-toggle');
+
+            if (window.innerWidth <= 768 &&
+                navMenu.classList.contains('active') &&
+                !navMenu.contains(e.target) &&
+                !menuToggle.contains(e.target)) {
+                navMenu.classList.remove('active');
+            }
+        });
+    </script>
+
 </body>
 
 </html>
