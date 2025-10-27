@@ -4,15 +4,8 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>KidneySync — Save Lives</title>
+    <title>KidneySync – Save Lives</title>
     <link rel="icon" type="image/x-icon" href="./images/ico.png">
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            if (/Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-                window.location.href = "mobile.html";
-            }
-        });
-    </script>
 
     <!-- Google Font for Zen Dots -->
     <link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet">
@@ -31,7 +24,7 @@
 
         body {
             font-family: 'Arial', sans-serif;
-            background: #0ea5a4;
+            background: #0d0517;
             color: #fff;
         }
 
@@ -46,7 +39,6 @@
             flex-direction: column;
         }
 
-        /* dark overlay so text is readable */
         .hero-section::before {
             content: "";
             position: absolute;
@@ -56,7 +48,6 @@
             pointer-events: none;
         }
 
-        /* flowing overlay */
         .flowing-bg {
             position: absolute;
             bottom: 0;
@@ -97,6 +88,19 @@
             display: block;
         }
 
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            background: #0ea5a4;
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            border-radius: 8px;
+            z-index: 1000;
+        }
+
         .nav-menu {
             display: flex;
             gap: 12px;
@@ -135,6 +139,28 @@
             width: 100%;
         }
 
+        /* Home icon button styling */
+        .home-icon-btn {
+            background: #0ea5a4 !important;
+            color: #fff !important;
+            padding: 8px 12px !important;
+            border-radius: 8px !important;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 40px;
+            transition: all 0.3s ease;
+        }
+
+        .home-icon-btn:hover {
+            background: #0c8d8c !important;
+            transform: scale(1.05);
+        }
+
+        .home-icon-btn::after {
+            display: none !important;
+        }
+
         /* HERO CONTENT */
         .hero-content {
             position: relative;
@@ -161,14 +187,217 @@
         }
 
         .cta {
-            background: #0ea5a4;
+            background: #00c3c2;
             color: #022;
-            padding: .84rem 2rem;
-            border-radius: 60px;
-            border: 0;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            border: none;
+            font-weight: 600;
             cursor: pointer;
-            font-weight: 100;
-            margin: 6px;
+            margin: 6px 0;
+            width: 100%;
+            max-width: 300px;
+            transition: all 0.2s ease;
+        }
+
+        .cta:hover {
+            background: #dff8f6;
+        }
+
+        .close-btn {
+            background: #022;
+            color: #fff;
+            width: auto;
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+        }
+
+        /* MODAL */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(3, 7, 18, 0.65);
+            backdrop-filter: blur(6px);
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .modal-content {
+            background: #0ea5a4;
+            color: #ffffff;
+            padding: 32px 24px;
+            border-radius: 20px;
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content h3 {
+            margin-bottom: 18px;
+            color: #022;
+            font-family: 'Zen Dots', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* STEP BY STEP GUIDE SECTION */
+        .guide-section {
+            max-width: 900px;
+            margin: 3rem auto 2rem;
+            padding: 2.5rem 2rem;
+            background: linear-gradient(135deg, #0a2540 0%, #041c32 100%);
+            border-radius: 20px;
+            border: 2px solid #0ea5a4;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .guide-section h2 {
+            font-family: 'Zen Dots', sans-serif;
+            color: #0ea5a4;
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .guide-subtitle {
+            text-align: center;
+            color: #9ef0dd;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .guide-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .step-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(14, 165, 164, 0.1);
+            border-radius: 12px;
+            border-left: 4px solid #0ea5a4;
+            transition: all 0.3s ease;
+        }
+
+        .step-item:hover {
+            background: rgba(14, 165, 164, 0.2);
+            transform: translateX(5px);
+        }
+
+        .step-icon {
+            font-size: 1.5rem;
+            min-width: 30px;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-title {
+            color: #0ea5a4;
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+        }
+
+        .step-desc {
+            color: #b0e0e6;
+            line-height: 1.5;
+        }
+
+        .step-reports {
+            margin-top: 0.5rem;
+            padding-left: 1rem;
+        }
+
+        .step-reports div {
+            margin: 0.3rem 0;
+        }
+
+        .wait-note {
+            text-align: center;
+            font-style: italic;
+            color: #9ef0dd;
+            margin-top: 1rem;
+        }
+
+        /* FEATURES SECTION */
+        .features-section {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+
+        .features-section h2 {
+            font-family: 'Zen Dots', sans-serif;
+            color: #ffffff;
+            font-size: 2.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .features-section h2::before {
+            content: "💡 ";
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            padding: 2rem 1.5rem;
+            border-radius: 16px;
+            border: 2px solid #0ea5a4;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(14, 165, 164, 0.3);
+            border-color: #9ef0dd;
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-title {
+            color: #fff;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .feature-desc {
+            color: #b0e0e6;
+            line-height: 1.6;
         }
 
         /* BLOG SECTION */
@@ -191,6 +420,11 @@
             color: #071026;
             border-radius: 12px;
             overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
         }
 
         .blog-image {
@@ -216,6 +450,7 @@
         .blog-title {
             font-weight: 700;
             margin-bottom: 8px;
+            color: #000;
         }
 
         .blog-desc {
@@ -230,18 +465,164 @@
             border-radius: 8px;
             border: 0;
             cursor: pointer;
+            transition: background 0.3s ease;
         }
 
-        /* RESPONSIVE */
-        @media (max-width:600px) {
+        .btn-view:hover {
+            background: #357272;
+        }
+
+        /* RESPONSIVE - TABLET */
+        @media (max-width: 1024px) {
+            .logo img {
+                width: 200px;
+                height: 200px;
+            }
+
+            .nav-menu {
+                gap: 8px;
+            }
+
+            .nav-menu a {
+                font-size: 0.9rem;
+                padding: 5px 6px;
+            }
+        }
+
+        /* RESPONSIVE - MOBILE */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .logo img {
+                width: 150px;
+                height: 150px;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background: linear-gradient(135deg, #0a2540 0%, #041c32 100%);
+                flex-direction: column;
+                padding: 5rem 2rem 2rem;
+                gap: 0;
+                transition: right 0.3s ease;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+                z-index: 999;
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .nav-menu li {
+                width: 100%;
+                border-bottom: 1px solid rgba(14, 165, 164, 0.3);
+            }
+
+            .nav-menu a {
+                display: block;
+                padding: 1rem;
+                width: 100%;
+                font-size: 1.1rem;
+            }
+
+            .home-icon-btn {
+                justify-content: flex-start !important;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content {
+                margin-top: 5vh;
+            }
+
+            .guide-section {
+                padding: 1.5rem 1rem;
+                margin: 2rem 1rem;
+            }
+
+            .guide-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .guide-subtitle {
+                font-size: 1rem;
+            }
+
+            .features-section h2 {
+                font-size: 2rem;
+            }
+
+            .feature-card {
+                padding: 1.5rem 1rem;
+            }
+
+            .flowing-bg {
+                width: 60%;
+                height: 40%;
+            }
+        }
+
+        @media (max-width: 600px) {
             .hero-content h1 {
                 font-size: 1.9rem;
+            }
+
+            .hero-sub {
+                font-size: 0.8rem;
             }
 
             .flowing-bg {
                 width: 70%;
                 height: 28%;
                 right: -6%;
+            }
+
+            .guide-section h2 {
+                font-size: 1.3rem;
+            }
+
+            .step-item {
+                flex-direction: column;
+            }
+
+            .features-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .feature-icon {
+                font-size: 2rem;
+            }
+
+            .blog-section h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .logo img {
+                width: 120px;
+                height: 120px;
+            }
+
+            .hero-content h1 {
+                font-size: 1.5rem;
+            }
+
+            .cta {
+                padding: 0.7rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            .nav-menu {
+                width: 80%;
             }
         }
     </style>
@@ -270,31 +651,140 @@
                 </svg>
             </a>
 
+            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">
+                ☰
+            </button>
+
             <nav aria-label="main">
-                <ul class="nav-menu">
+                <ul class="nav-menu" id="navMenu">
                     <li><a href="./index.html" class="active">🏠 Home</a></li>
-                    <li><a href="https://bit.ly/KidneySync" target="_blank">🔎 Kidney Check</a></li>
+                    <li><a href="https://kidneysync.lovable.app" target="_blank">🔎 Kidney Check</a></li>
                     <li><a href="./html/chat.html">🤖 KidneyAI</a></li>
                     <li><a href="./html/event_cal.html">📆 Event Calendar</a></li>
-                    <li><a href="./html/aboutus.html">💠 About</a></li>
-                    <li><a href="./html/login.html">👾 Sign in</a></li>
+                    <li><a href="./html/aboutus.html">👨 About</a></li>
+                    <li><a href="./html/login.html">💾 Sign in</a></li>
+                    <li><a href="./si.html" class="home-icon-btn" aria-label="Sinhala">සිං</a></li>
                 </ul>
             </nav>
         </header>
 
         <div class="hero-content">
             <h1>Check Your Kidneys</h1>
-            <div class="hero-sub">ANYTIME — ANYWHERE</div>
-            <button class="cta" onclick="window.open('https://bit.ly/KidneySync', '_blank')">Check Now</button><br>
+            <div class="hero-sub">ANYTIME – ANYWHERE</div>
+            <button class="cta" onclick="openModal()">Check Now</button><br>
             <button class="cta" onclick="window.open('./html/chat.html', '_blank')">KidneyAI</button>
         </div>
     </section>
 
+    <!-- Check Now Modal -->
+    <div id="optionModal" class="modal">
+        <div class="modal-content">
+            <h3>Select a Prediction System</h3>
+            <button class="cta" onclick="window.open('https://kidneysync.lovable.app/', '_blank')">Option 1: Smart Prediction System</button><br>
+            <button class="cta" onclick="window.open('https://bit.ly/KidneySync', '_blank')">Option 2: Normal Prediction System</button><br>
+            <button class="cta" disabled style="opacity:0.6;cursor:not-allowed;">Option 3: Coming Soon...</button><br><br>
+            <button class="cta close-btn" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <!-- STEP BY STEP GUIDE SECTION -->
+    <section class="guide-section">
+        <h2>🩺 How to Check Your Kidney Health on KidneySync</h2>
+        <p class="guide-subtitle">Follow these simple steps:</p>
+
+        <div class="guide-steps">
+            <div class="step-item">
+                <div class="step-icon">◆</div>
+                <div class="step-content">
+                    <div class="step-title">Step 1:</div>
+                    <div class="step-desc">Go to the KidneySync website.</div>
+                </div>
+            </div>
+
+            <div class="step-item">
+                <div class="step-icon">◆</div>
+                <div class="step-content">
+                    <div class="step-title">Step 2:</div>
+                    <div class="step-desc">Click the "Check Now" button.</div>
+                </div>
+            </div>
+
+            <div class="step-item">
+                <div class="step-icon">◆</div>
+                <div class="step-content">
+                    <div class="step-title">Step 3:</div>
+                    <div class="step-desc">Select <strong>Option 1</strong> from the menu.</div>
+                </div>
+            </div>
+
+            <div class="step-item">
+                <div class="step-icon">◆</div>
+                <div class="step-content">
+                    <div class="step-title">Step 4:</div>
+                    <div class="step-desc">Upload the following reports:</div>
+                    <div class="step-reports">
+                        <div>🧪 Blood Urea Test</div>
+                        <div>🩸 Blood Glucose Test</div>
+                        <div>💧 Urine Analysis Test</div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="wait-note">Wait a few moments while the AI OCR system processes your reports.</p>
+
+            <div class="step-item">
+                <div class="step-icon">◆</div>
+                <div class="step-content">
+                    <div class="step-title">Step 5:</div>
+                    <div class="step-desc">Type in your <strong>Blood Pressure (mmHg)</strong> reading.</div>
+                </div>
+            </div>
+
+            <div class="step-item">
+                <div class="step-icon">◆</div>
+                <div class="step-content">
+                    <div class="step-title">Step 6:</div>
+                    <div class="step-desc">Click the "Analyze" button to view your personalized kidney health results.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES SECTION -->
+    <section class="features-section">
+        <h2>Features</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">⚙️</div>
+                <div class="feature-title">AI-based OCR reads lab reports instantly</div>
+                <div class="feature-desc">Advanced optical character recognition technology extracts data from your medical reports with high accuracy.</div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🩺</div>
+                <div class="feature-title">Personalized kidney health insights</div>
+                <div class="feature-desc">Get tailored recommendations and analysis based on your specific test results and health profile.</div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <div class="feature-title">Easy-to-understand results dashboard</div>
+                <div class="feature-desc">View your kidney health status through intuitive visualizations and clear explanations.</div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📱</div>
+                <div class="feature-title">Mobile-friendly & privacy-protected</div>
+                <div class="feature-desc">Access from any device with complete data security and HIPAA-compliant privacy measures.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOG SECTION -->
     <section class="blog-section" aria-labelledby="blogs-title">
-        <h2 id="blogs-title" style="color:#000000;margin-bottom:12px">Blogs About Kidney Disease</h2>
+        <h2 id="blogs-title" style="color:#ffffff;margin-bottom:12px">Blogs About Kidney Disease</h2>
 
         <div class="blog-grid">
-            <!-- CARD 1 -->
             <article class="blog-card">
                 <div class="blog-image">
                     <img src="./images/kidney-health.png" alt="kidney health"
@@ -314,7 +804,6 @@
                 </div>
             </article>
 
-            <!-- CARD 2 -->
             <article class="blog-card">
                 <div class="blog-image">
                     <img src="./images/cell-therapy.jpg" alt="cell therapy"
@@ -333,7 +822,6 @@
                 </div>
             </article>
 
-            <!-- CARD 3 -->
             <article class="blog-card">
                 <div class="blog-image">
                     <img src="./images/ai-tools.png" alt="ai tools"
@@ -358,6 +846,52 @@
     <footer style="text-align:center;padding:2rem;color:#0ea5a4;background:#030303;margin-top:2rem">
         © 2025 KidneySync
     </footer>
+
+    <script>
+        // Modal functions
+        function openModal() {
+            document.getElementById("optionModal").style.display = "flex";
+        }
+        
+        function closeModal() {
+            document.getElementById("optionModal").style.display = "none";
+        }
+        
+        window.onclick = function(event) {
+            const modal = document.getElementById("optionModal");
+            if (event.target === modal) {
+                closeModal();
+            }
+        };
+
+        // Mobile menu toggle
+        function toggleMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        }
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    document.getElementById('navMenu').classList.remove('active');
+                }
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            const navMenu = document.getElementById('navMenu');
+            const menuToggle = document.querySelector('.menu-toggle');
+            
+            if (window.innerWidth <= 768 && 
+                navMenu.classList.contains('active') && 
+                !navMenu.contains(e.target) && 
+                !menuToggle.contains(e.target)) {
+                navMenu.classList.remove('active');
+            }
+        });
+    </script>
 
 </body>
 

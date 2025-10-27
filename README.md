@@ -51,3 +51,13 @@ Below is the prediction interface preview — click the image to open the live p
 - Mr.X Zer
 - Imesh S Abeysinghe
 - Next Gen Creators
+
+## ⚠️ Disclaimer
+
+**KidneySync** is an **educational tool** and **NOT a substitute for professional medical diagnosis.**
+Always consult a **licensed healthcare professional** for medical advice and diagnosis.
+
+## 📜 License
+
+Released under the MIT License.
+**© 2025 KidneySync**
