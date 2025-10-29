@@ -15,6 +15,10 @@ Below is the prediction interface preview — click the image to open the live p
 
 [![Prediction Interface — Click to Open](./images/preview-predict.png)](https://kidneysync.lovable.app/)
 
+Below is the KidneyAI Interface preview - click the image to open.
+
+[![KidneyAI Interface — Click to Open](./images/preview-chat.png)](./html/chat.html)
+
 ---
 
 ## 🚀 Live Links
